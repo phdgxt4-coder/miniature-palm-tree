@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة التفوق - الصف الأول الثانوي 2027</title>
+<style>
+/* ===== المتغيرات الأساسية ===== */
+:root {
+  --primary: #1a2980;
+  --primary-light: #2c3e9e;
+  --secondary: #26d0ce;
+  --accent: #ff6b6b;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --dark: #1a1a2e;
+  --light: #f8f9ff;
+  --text: #333;
+  --text-muted: #6c757d;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 8px 20px rgba(0,0,0,0.12);
+  --shadow-lg: 0 15px 40px rgba(0,0,0,0.2);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== إعادة تعيين ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Tahoma', 'Segoe UI', 'Arial', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: linear-gradient(135deg, #0f0c29 0%, #1a2980 50%, #26d0ce 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--text);
+  padding: 20px;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ===== خلفية متحركة ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(38, 208, 206, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+  animation: bgFloat 15s ease-in-out infinite;
+}
+
+@keyframes bgFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -20px) scale(1.05); }
+}
+
+/* ===== الحاوية ===== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== الهيدر ===== */
+header {
+  text-align: center;
+  color: white;
+  padding: 40px 20px 30px;
+  margin-bottom: 30px;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+header .logo {
+  font-size: 4em;
+  margin-bottom: 10px;
+  display: inline-block;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+header h1 {
+  font-size: clamp(1.8em, 5vw, 3em);
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 12px rgba(0,0,0,0.4);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+header p {
+  font-size: clamp(1em, 2.5vw, 1.2em);
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+header .tagline {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 22px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  font-size: 0.95em;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ===== لوحة التحكم ===== */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.6s ease-out both;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.card .icon {
+  font-size: 3.5em;
+  margin-bottom: 15px;
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.card h2 {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.card p {
+  font-size: 0.95em;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.card .badge-new {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.7em;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ===== قسم الامتحان ===== */
+.exam-section {
+  background: white;
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 30px;
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.exam-section.active { display: block; }
+
+/* شريط التقدم */
+.progress-container {
+  margin-bottom: 25px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  width: 0%;
+  transition: width 0.5s ease;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* هيدر الامتحان */
+.exam-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 25px;
+}
+
+.exam-header h2 {
+  color: var(--primary);
+  font-size: clamp(1.3em, 3vw, 1.8em);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.exam-header .badge {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 0.9em;
+  font-weight: bold;
+  box-shadow: var(--shadow-sm);
+}
+
+/* أزرار التنقل بين الأجزاء */
+.part-nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.part-btn {
+  padding: 10px 22px;
+  border: 2px solid var(--primary);
+  background: white;
+  color: var(--primary);
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9em;
+  transition: var(--transition);
+  position: relative;
+}
+
+.part-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.part-btn.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.part-btn.done {
+  background: linear-gradient(135deg, var(--success), #20c997);
+  border-color: var(--success);
+  color: white;
+}
+
+.part-btn.done::after {
+  content: '✓';
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+/* السؤال */
+.question {
+  background: var(--light);
+  border-radius: var(--radius-sm);
+  padding: 22px;
+  margin-bottom: 20px;
+  border-right: 5px solid var(--primary);
+  transition: var(--transition);
+  animation: questionSlide 0.5s ease-out both;
+}
+
+@keyframes questionSlide {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.question:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateX(-3px);
+}
+
+.question .q-text {
+  font-size: 1.05em;
+  font-weight: 600;
+  margin-bottom: 18px;
+  line-height: 1.8;
+  color: var(--primary);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.question .q-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  min-width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 0.9em;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.options {
+  display: grid;
+  gap: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.option:hover {
+  border-color: var(--primary);
+  background: #f0f4ff;
+  transform: translateX(-5px);
+}
+
+.option.selected {
+  border-color: var(--primary);
+  background: #e3ecff;
+  box-shadow: 0 0 0 3px rgba(26, 41, 128, 0.1);
+}
+
+.option.correct {
+  border-color: var(--success);
+  background: #d4edda;
+  animation: correctPulse 0.6s ease;
+}
+
+.option.wrong {
+  border-color: var(--danger);
+  background: #f8d7da;
+  animation: shake 0.5s ease;
+}
+
+@keyframes correctPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.option .marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  margin-left: 12px;
+  flex-shrink: 0;
+  font-weight: bold;
+  font-size: 0.85em;
+  transition: var(--transition);
+}
+
+.option.selected .marker {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: white;
+}
+
+.option.correct .marker {
+  border-color: var(--success);
+  background: var(--success);
+  color: white;
+}
+
+.option.wrong .marker {
+  border-color: var(--danger);
+  background: var(--danger);
+  color: white;
+}
+
+.option label {
+  cursor: pointer;
+  flex: 1;
+  font-size: 0.98em;
+  line-height: 1.6;
+}
+
+/* الأزرار */
+.btn {
+  padding: 14px 35px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.05em;
+  font-weight: bold;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+.btn:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, var(--success), #20c997);
+  color: white;
+}
+
+.btn-success:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #6c757d, #495057);
+  color: white;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* صندوق النتيجة */
+.result-box {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 30px;
+  border-radius: var(--radius);
+  text-align: center;
+  margin-top: 25px;
+  display: none;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.result-box.show {
+  display: block;
+  animation: resultPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes resultPop {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.result-box::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.result-box h3 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.result-box .score {
+  font-size: 3.5em;
+  font-weight: 900;
+  margin: 10px 0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+.result-box p {
+  font-size: 1.1em;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+}
+
+/* النتيجة النهائية */
+.final-result {
+  text-align: center;
+  padding: 40px 30px;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  border-radius: var(--radius);
+  color: #333;
+  display: none;
+  margin-top: 25px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.final-result.show {
+  display: block;
+  animation: finalPop 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes finalPop {
+  from { opacity: 0; transform: scale(0.7) rotate(-5deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.final-result::before {
+  content: '🏆';
+  position: absolute;
+  top: 20px; left: 20px;
+  font-size: 3em;
+  opacity: 0.3;
+  animation: bounce 2s infinite;
+}
+
+.final-result::after {
+  content: '🎉';
+  position: absolute;
+  top: 20px; right: 20px;
+  font-size: 3em;
+  opacity: 0.3;
+  animation: bounce 2s infinite 0.5s;
+}
+
+.final-result h2 {
+  font-size: clamp(1.5em, 4vw, 2.2em);
+  margin-bottom: 15px;
+  font-weight: 900;
+  position: relative;
+  z-index: 1;
+}
+
+.final-result .total {
+  font-size: clamp(3em, 8vw, 5em);
+  font-weight: 900;
+  color: var(--primary);
+  position: relative;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.final-result p {
+  font-size: 1.2em;
+  margin-top: 15px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== قسم الكتب ===== */
+.books-section {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.books-section.active { display: block; }
+
+.books-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.books-header h2 {
+  font-size: clamp(1.5em, 4vw, 2.2em);
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.books-header p {
+  opacity: 0.9;
+  font-size: 1.05em;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 22px;
+  margin-top: 20px;
+}
+
+.book-card {
+  background: white;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  animation: slideUp 0.6s ease-out both;
+}
+
+.book-card:nth-child(1) { animation-delay: 0.1s; }
+.book-card:nth-child(2) { animation-delay: 0.2s; }
+.book-card:nth-child(3) { animation-delay: 0.3s; }
+.book-card:nth-child(4) { animation-delay: 0.4s; }
+
+.book-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.book-cover {
+  height: 170px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 4em;
+  position: relative;
+  overflow: hidden;
+}
+
+.book-cover::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  animation: rotate 15s linear infinite;
+}
+
+.book-cover span {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+}
+
+.book-info {
+  padding: 22px;
+}
+
+.book-info h3 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 1.15em;
+  font-weight: 700;
+}
+
+.book-info p {
+  color: var(--text-muted);
+  font-size: 0.9em;
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+
+.book-info a {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  font-weight: bold;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.book-info a:hover {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== زر الرجوع ===== */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 12px 24px;
+  background: white;
+  color: var(--primary);
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  border: 2px solid white;
+}
+
+.back-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateX(5px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== الفوتر ===== */
+footer {
+  text-align: center;
+  color: white;
+  padding: 30px 20px;
+  margin-top: 40px;
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+
+footer a {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ===== الإحصائيات ===== */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9ff, #e3ecff);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-item {
+  text-align: center;
+  padding: 10px;
+}
+
+.stat-item .stat-value {
+  font-size: 1.8em;
+  font-weight: 900;
+  color: var(--primary);
+  display: block;
+}
+
+.stat-item .stat-label {
+  font-size: 0.8em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/* ===== التجاوب مع الشاشات الصغيرة ===== */
+@media (max-width: 600px) {
+  body { padding: 12px; }
+  header { padding: 25px 15px 20px; }
+  header .logo { font-size: 3em; }
+  .exam-section, .books-section { padding: 20px 15px; }
+  .question { padding: 18px 15px; }
+  .btn { padding: 12px 25px; font-size: 0.95em; }
+  .part-btn { padding: 8px 16px; font-size: 0.85em; }
+  .result-box .score { font-size: 2.8em; }
+  .option { padding: 12px 14px; }
+  .option label { font-size: 0.9em; }
+}
+
+/* ===== أنيميشن الظهور ===== */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* شريط علوي للتنقل السريع */
+.quick-nav {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26, 41, 128, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 30px;
+  display: flex;
+  gap: 15px;
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.quick-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.85em;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: var(--transition);
+}
+
+.quick-nav a:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .quick-nav { padding: 8px 12px; gap: 8px; }
+  .quick-nav a { font-size: 0.75em; padding: 6px 10px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- الهيدر -->
+  <header id="mainHeader">
+    <div class="logo">🎓</div>
+    <h1>منصة التفوق</h1>
+    <p>الصف الأول الثانوي - الفصل الدراسي الأول 2027</p>
+    <span class="tagline">✨ مذاكرة أذكى... تفوق أسرع</span>
+  </header>
+
+  <!-- لوحة التحكم الرئيسية -->
+  <div class="dashboard" id="dashboard">
+    <div class="card" onclick="showExam()">
+      <span class="badge-new">جديد</span>
+      <div class="icon">📝</div>
+      <h2>امتحان الفلسفة والمنطق</h2>
+      <p>50 سؤالاً شاملاً على الدروس السبعة الأولى - مقسمة إلى 5 أجزاء مع تصحيح فوري</p>
+    </div>
+    <div class="card" onclick="showBooks()">
+      <div class="icon">📚</div>
+      <h2>مكتبة الكتب</h2>
+      <p>تحميل كتب الوزارة والملخصات بصيغة PDF لجميع المواد</p>
+    </div>
+    <div class="card" onclick="alert('قريباً: بنوك الأسئلة التفاعلية لكل المواد')">
+      <div class="icon">🧠</div>
+      <h2>بنوك الأسئلة</h2>
+      <p>بنوك أسئلة شاملة لجميع المواد مع إجابات نموذجية (قريباً)</p>
+    </div>
+          <div class="card" onclick="alert('قريباً: جدول المذاكرة الذكي')">
+      <div class="icon">📅</div>
+      <h2>خطط المذاكرة</h2>
+      <p>جداول مذاكرة جاهزة ومخصصة حسب المنهج (قريباً)</p>
+    </div>
+  </div>
+
+  <!-- قسم الامتحان -->
+  <div class="exam-section" id="examSection">
+    <a href="#" class="back-btn" onclick="goHome(); return false;">← العودة للرئيسية</a>
+    
+    <div class="exam-header">
+      <h2>📝 امتحان الفلسفة والمنطق</h2>
+      <span class="badge">50 سؤال | 5 أجزاء</span>
+    </div>
+
+    <!-- إحصائيات -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-value" id="statAnswered">0</span>
+        <span class="stat-label">تم الإجابة</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" id="statCorrect">0</span>
+        <span class="stat-label">إجابات صحيحة</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" id="statRemaining">50</span>
+        <span class="stat-label">متبقي</span>
+      </div>
+    </div>
+
+    <!-- شريط التقدم -->
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text">
+        <span id="progressLabel">الجزء 1 من 5</span>
+        <span id="progressPercent">0%</span>
+      </div>
+    </div>
+
+    <div class="part-nav" id="partNav">
+      <button class="part-btn active" onclick="showPart(1)">الجزء الأول</button>
+      <button class="part-btn" onclick="showPart(2)">الجزء الثاني</button>
+      <button class="part-btn" onclick="showPart(3)">الجزء الثالث</button>
+      <button class="part-btn" onclick="showPart(4)">الجزء الرابع</button>
+      <button class="part-btn" onclick="showPart(5)">الجزء الخامس</button>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <div class="result-box" id="resultBox">
+      <h3>نتيجة الجزء</h3>
+      <div class="score" id="partScore">0/10</div>
+      <p id="partMessage"></p>
+    </div>
+
+    <div style="text-align: center; margin-top: 25px;">
+      <button class="btn btn-primary" id="submitBtn" onclick="submitPart()">تصحيح الجزء</button>
+      <button class="btn btn-success" id="nextBtn" style="display:none;" onclick="nextPart()">الجزء التالي ←</button>
+    </div>
+
+    <div class="final-result" id="finalResult">
+      <h2>🎉 النتيجة النهائية</h2>
+      <div class="total" id="finalScore">0/50</div>
+      <p id="finalMessage" style="font-size: 1.3em; margin-top: 15px;"></p>
+    </div>
+  </div>
+
+  <!-- قسم الكتب -->
+  <div class="books-section" id="booksSection">
+    <a href="#" class="back-btn" onclick="goHome(); return false;">← العودة للرئيسية</a>
+    <div class="books-header">
+      <h2>📚 مكتبة الكتب المدرسية</h2>
+      <p>حمّل كتب الوزارة والملخصات بصيغة PDF</p>
+    </div>
+    <div class="books-grid">
+      <div class="book-card">
+        <div class="book-cover"><span>📖</span></div>
+        <div class="book-info">
+          <h3>كتاب الفلسفة والمنطق</h3>
+          <p>الكتاب المدرسي الرسمي - الصف الأول الثانوي 2027</p>
+          <a href="books/philosophy.pdf" target="_blank">📥 فتح الكتاب</a>
+        </div>
+      </div>
+      <div class="book-card">
+        <div class="book-cover"><span>📐</span></div>
+        <div class="book-info">
+          <h3>كتاب الرياضيات</h3>
+          <p>الكتاب المدرسي الرسمي - الجبر والمثلثات</p>
+          <a href="books/math.pdf" target="_blank">📥 فتح الكتاب</a>
+        </div>
+      </div>
+      <div class="book-card">
+        <div class="book-cover"><span>🔬</span></div>
+        <div class="book-info">
+          <h3>كتاب العلوم المتكاملة</h3>
+          <p>الكتاب المدرسي الرسمي - النظام البيئي</p>
+          <a href="books/science.pdf" target="_blank">📥 فتح الكتاب</a>
+        </div>
+      </div>
+      <div class="book-card">
+        <div class="book-cover"><span>🏛️</span></div>
+        <div class="book-info">
+          <h3>كتاب التاريخ</h3>
+          <p>الكتاب المدرسي الرسمي - حضارة مصر والعالم القديم</p>
+          <a href="books/history.pdf" target="_blank">📥 فتح الكتاب</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- الفوتر -->
+  <footer>
+    <p>© 2027 منصة التفوق - جميع الحقوق محفوظة</p>
+    <p style="margin-top: 8px;">صنع بـ ❤️ للطلاب المصريين</p>
+  </footer>
+
+</div>
+
+<!-- شريط التنقل السريع -->
+<div class="quick-nav" id="quickNav">
+  <a href="#" onclick="goHome(); return false;">🏠 الرئيسية</a>
+  <a href="#" onclick="showExam(); return false;">📝 الامتحان</a>
+  <a href="#" onclick="showBooks(); return false;">📚 الكتب</a>
+</div>
+
+<script>
+/* ============================================================
+   بيانات الامتحان الكاملة - 50 سؤال
+   ============================================================ */
+const examData = {
+  1: [
+    { q: "التفكير هو مجموعة العمليات العقلية الراقية التي يقوم بها الإنسان مستهدفاً حل مشكلة ما أو تفسير موقف غامض. هذا التعريف يشير إلى أن التفكير عملية:", options: ["تلقائية فطرية", "مكتسبة ومقصودة", "مرتبطة بالحواس فقط", "غير مرئية ويستدل عليها"], correct: 3 },
+    { q: "عندما يقوم المهندس المعماري بوضع تصميم لبناء ما، مراعياً مساحة الأرض وعدد الطوابق والجدول الزمني للتنفيذ، فإنه يمارس إحدى حالات النشاط العقلي وهي:", options: ["تذكر الماضي", "حل المشكلات", "التخطيط للمستقبل", "تنظيم الخبرات"], correct: 2 },
+    { q: "«المنفعة العملية للفرد» كأحد أهميات التفكير الإنساني تتحقق من خلال:", options: ["مساعدة الآخرين وحل مشكلات المجتمع", "شعور الفرد بالراحة النفسية والتكيف", "تميز الفرد في مجاله وتحقيق النجاح", "نقد الأفكار وتقديم المبررات العقلية"], correct: 2 },
+    { q: "أي من العبارات التالية تعبر عن «المنفعة العامة» للتفكير الإنساني؟", options: ["انتقال لاعب كرة قدم من المحلية للعالمية", "قيام مدير مصنع بتوفير وسائل مواصلات لعماله", "حصول طالب على دورات تدريبية ليتميز", "شعور الفرد بالاطمئنان بعد اجتياز أزمة"], correct: 1 },
+    { q: "«الطفل يبصر ويسمع ويفكر بالفطرة دون تعلم مسبق». هذه العبارة تشير إلى أن التفكير:", options: ["دائم التطور", "تلقائي فطري", "عملية معقدة", "مكتسب بالتعلم"], correct: 1 },
+    { q: "أي من الأساليب التالية يعتمد على «البحث عن العلل القريبة والأسباب المادية المباشرة»؟", options: ["الأسلوب الخرافي", "الأسلوب الفلسفي", "الأسلوب العلمي", "الأسلوب الديني"], correct: 2 },
+    { q: "«اعتقاد أن وضع حدوة فرس على الباب يجلب الرزق» هو مثال على:", options: ["الأسلوب الديني", "الأسلوب العلمي", "الأسلوب الفلسفي", "الأسلوب الخرافي"], correct: 3 },
+    { q: "«إرجاع ظاهرة الكسوف والخسوف إلى قدرة الله سبحانه وتعالى» يمثل:", options: ["الأسلوب العلمي", "الأسلوب الديني", "الأسلوب الفلسفي", "الأسلوب الخرافي"], correct: 1 },
+    { q: "من عوامل الوقوع في خطأ التفكير التي تتعلق بـ «سرعة تصديق الفرد لما يعرض عليه دون نقد أو تمحيص»:", options: ["تغليب العاطفة", "التعصب والتطرف", "القابلية للاستهواء", "التسرع في الحكم"], correct: 2 },
+    { q: "«رفض رأي صديق لمجرد أنه يختلف معك في الميول الفكرية دون مناقشة الأدلة» يمثل أحد عوامل خطأ التفكير وهو:", options: ["القابلية للاستهواء", "التعصب والتحزب", "صعوبة المشكلة", "نقص المعلومات"], correct: 1 }
+  ],
+  2: [
+    { q: "«إهمال القوانين وزيادة أعمال السلب والنهب» هي من نتائج عصر:", options: ["الدولة القديمة", "عصر الانتقال الأول", "الدولة الوسطى", "الدولة الحديثة"], correct: 1 },
+    { q: "«تكوين إمبراطورية مصرية واسعة» و«قيام أول ثورة دينية للتوحيد» من خصائص عصر:", options: ["الدولة القديمة", "عصر الانتقال الأول", "الدولة الوسطى", "الدولة الحديثة"], correct: 3 },
+    { q: "من عوامل قيام الحضارات في العالم القديم:", options: ["وفرة الثروات المعدنية", "وجود حواجز طبيعية", "كفاح الإنسان وتكييفه مع بيئته", "جميع ما سبق"], correct: 3 },
+    { q: "«الموقع الجغرافي المتميز لمصر كملتقى للقارات الثلاثة» أدى إلى:", options: ["عزلة الحضارة المصرية", "سهولة الاتصال والتأثر بالحضارات الأخرى", "كثرة الحروب", "نقص الموارد الطبيعية"], correct: 1 },
+    { q: "من العوامل البشرية التي ساهمت في قيام الحضارة المصرية القديمة:", options: ["نهر النيل", "المناخ المعتدل", "كفاح المصري القديم وجهده", "الحدود الطبيعية الآمنة"], correct: 2 },
+    { q: "«مفهوم الحضارة عند ول ديورانت» يركز على:", options: ["الاستقرار والأمن", "الإبداع والإنشاء", "النظام الاجتماعي", "جميع ما سبق"], correct: 3 },
+    { q: "«المعرفة الكلية المطلوبة لذاتها» هي تعريف الفلسفة من حيث:", options: ["النشأة", "الهدف", "المنهج", "الموضوع"], correct: 1 },
+    { q: "«فيلو» و«سوفيا» كلمتان يونانيتان تعنيان على الترتيب:", options: ["الحكمة - الحب", "الحب - الحكمة", "العلم - المعرفة", "المعرفة - العلم"], correct: 1 },
+    { q: "أي من العصور التالية تميز بـ «التوفيق بين الفلسفة والدين»؟", options: ["العصر اليوناني", "العصر الوسيط", "العصر الحديث", "العصر الراهن"], correct: 1 },
+    { q: "«استخدام مناهج علمية جديدة» هو ما يميز الموقف الفلسفي في:", options: ["العصر اليوناني", "العصر الوسيط", "العصر الحديث", "العصر الراهن"], correct: 2 }
+  ],
+  3: [
+    { q: "«الدهشة وإثارة التساؤل» كخاصية من خصائص الموقف الفلسفي تعني:", options: ["الخوف من المجهول", "الذهول الذي يدفع الإنسان للتساؤل ومحاولة الفهم", "رفض كل ما هو جديد", "الاعتماد على الحواس فقط"], correct: 1 },
+    { q: "«القدرة على التمييز بين الحقائق والأوهام والوصول إلى جوهر الأمور» هي خاصية:", options: ["الاتساق", "الدقة المنطقية", "البصيرة", "الصبر والتروى"], correct: 2 },
+    { q: "أي من التحديات التالية يواجه الموقف الفلسفي عندما «يخضع الفرد للمعتاد والمألوف»؟", options: ["النظرة الأحادية", "الخضوع للمألوف والمعتاد", "الافتقار للشجاعة الفكرية", "الخضوع للسلطات"], correct: 1 },
+    { q: "«الانتقال من المعلومات والوقائع المعروفة للوصول إلى نتائج جديدة» هي مهارة:", options: ["التفسير", "الاستنتاج", "التقويم", "التحليل"], correct: 1 },
+    { q: "«قدرة الفرد على تحليل الأفكار وتمييز صحيحها من خاطئها» هي مهارة:", options: ["الشك", "الحوار", "النقد", "التركيب"], correct: 2 },
+    { q: "«الشك الذي يتخذه الإنسان وسيلة مؤقتة بهدف الوصول إلى الحقيقة واليقين» هو:", options: ["الشك المذهبي", "الشك المطلق", "الشك المنهجي", "الشك الدائم"], correct: 2 },
+    { q: "«الحوار الذي يهدف إلى تبادل الآراء للتوصل إلى الرأي الصواب» هو:", options: ["الحوار السلبي", "الحوار الإيجابي", "الحوار الجدلي", "الحوار العبثي"], correct: 1 },
+    { q: "«قدرة الفرد على إعادة تجميع العناصر والجزئيات لتشكل وحدة واحدة» هي مهارة:", options: ["التحليل", "التركيب", "التفسير", "الاستنتاج"], correct: 1 },
+    { q: "«مهارة تجعل الفرد يتميز بحسن الإنصات وإعطاء الآخر حقه في التعبير» هي:", options: ["الشك", "النقد", "الحوار الإيجابي", "التحليل"], correct: 2 },
+    { q: "«رفض كائط للقول بنسبية الأخلاق وردها إلى العقل وحده» هو مثال على:", options: ["النقد الضعيف", "النقد المحكم", "الحوار السلبي", "الشك المذهبي"], correct: 1 }
+  ],
+  4: [
+    { q: "«المنطق» في اللغة العربية يعني:", options: ["الكلمة", "العقل", "الكلام الصادر عن العقل", "العلم"], correct: 2 },
+    { q: "«العلم الذي يدرس القواعد العامة للتفكير الصحيح» هو تعريف المنطق:", options: ["اللغوي", "الاصطلاحي", "الفلسفي", "العلمي"], correct: 1 },
+    { q: "«قدرة المذاب على الذوبان في المذيب لتكوين محلول متجانس» هو تعريف:", options: ["الذوبانية", "التركيز", "المحلول", "المذيب"], correct: 0 },
+    { q: "من عوامل الوقوع في أخطاء التفكير «الموضوعية»:", options: ["تغليب العاطفة", "القابلية للاستهواء", "عدم الدقة في استخدام اللغة", "التسرع في الحكم"], correct: 2 },
+    { q: "«الحد المنطقي» هو:", options: ["لفظ أو مجموعة ألفاظ تصلح أن تكون طرفاً في القضية", "جملة خبرية", "سؤال إنشائي", "حكم"], correct: 0 },
+    { q: "«الحد الذي يطلق على فرد أو شيء واحد بعينه» هو الحد:", options: ["الكلي", "الجزئي", "الجمعي", "السالب"], correct: 1 },
+    { q: "«الحد الذي يصلح أن يشترك في معناه أفراد كثيرون» هو الحد:", options: ["الجزئي", "الكلي", "الجمعي", "السالب"], correct: 1 },
+    { q: "«الحد الذي يدل على وجود شيء أو إثبات صفة» هو الحد:", options: ["السالب", "الموجب", "الكلي", "الجزئي"], correct: 1 },
+    { q: "«القضية المنطقية» هي:", options: ["جملة إنشائية", "جملة خبرية يمكن الحكم عليها بالصدق أو الكذب", "سؤال", "أمر"], correct: 1 },
+    { q: "«أحمد طالب مجتهد» هي قضية:", options: ["إنشائية", "منطقية", "شرطية", "عطفية"], correct: 1 }
+  ],
+  5: [
+    { q: "«المفهوم» في المنطق هو:", options: ["الصورة الذهنية للشيء", "الأفراد الذين ينطبق عليهم اللفظ", "اللفظ نفسه", "الحكم"], correct: 0 },
+    { q: "«الماصدق» في المنطق هو:", options: ["الصورة الذهنية", "الأفراد الذين يصدق عليهم المفهوم في الواقع", "اللفظ", "المعنى"], correct: 1 },
+    { q: "«العلاقة بين المفهوم والماصدق» هي علاقة:", options: ["طردية دائمًا", "عكسية دائمًا", "عكسية ولكن ليست دائمًا", "لا توجد علاقة"], correct: 2 },
+    { q: "«التقابل بالتضاد» يكون بين:", options: ["لفظين مثبتين", "لفظ مثبت وآخر منفي", "لفظين منفيين", "لفظ وجمعه"], correct: 0 },
+    { q: "«التقابل بالتناقض» يكون بين:", options: ["لفظين مثبتين", "لفظ مثبت ونفسه منفيًا", "لفظين منفيين", "لفظين متساويين"], correct: 1 },
+    { q: "في «التقابل بالتناقض» إذا كان لدينا «أبيض» و «لا أبيض» فإن:", options: ["يمكن أن يرتفعا معًا", "يمكن أن يجتمعا معًا", "لا يمكن أن يرتفعا معًا ولا يجتمعا معًا", "لا يوجد بينهما وسط"], correct: 2 },
+    { q: "«الكليات الخمس» تشمل:", options: ["الجنس، النوع، الفصل، الخاصة، العرض العام", "الجنس، النوع، الفصل، الخاصة، العرض الخاص", "الجنس، النوع، الفصل، الخاصة، العرض", "الجنس، النوع، الفصل، الخاصة، العرض الجزئي"], correct: 0 },
+    { q: "«الحد الكلي الذي يطلق على عدة أنواع» هو:", options: ["النوع", "الجنس", "الفصل", "الخاصة"], correct: 1 },
+    { q: "«الصفة الجوهرية التي تميز النوع عن غيره» هي:", options: ["الجنس", "النوع", "الفصل", "الخاصة"], correct: 2 },
+    { q: "«الصفة غير الجوهرية التي تميز النوع عن غيره» هي:", options: ["الجنس", "النوع", "الفصل", "الخاصة"], correct: 3 }
+  ]
+};
+
+/* ============================================================
+   متغيرات الحالة
+   ============================================================ */
+let currentPart = 1;
+let userAnswers = {};
+let partScores = {1: null, 2: null, 3: null, 4: null, 5: null};
+let partSubmitted = {1: false, 2: false, 3: false, 4: false, 5: false};
+
+/* ============================================================
+   دوال التنقل بين الأقسام
+   ============================================================ */
+function showExam() {
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('booksSection').classList.remove('active');
+  document.getElementById('examSection').classList.add('active');
+  renderPart(currentPart);
+  updateStats();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showBooks() {
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('examSection').classList.remove('active');
+  document.getElementById('booksSection').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goHome() {
+  document.getElementById('dashboard').style.display = 'grid';
+  document.getElementById('examSection').classList.remove('active');
+  document.getElementById('booksSection').classList.remove('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   عرض الجزء الحالي
+   ============================================================ */
+function showPart(part) {
+  currentPart = part;
+  document.querySelectorAll('.part-btn').forEach((btn, idx) => {
+    btn.classList.toggle('active', idx + 1 === part);
+  });
+  renderPart(part);
+  updateProgress();
+}
+
+function renderPart(part) {
+  const container = document.getElementById('questionsContainer');
+  const questions = examData[part];
+  let html = '';
+  
+  questions.forEach((q, idx) => {
+    const globalNum = (part - 1) * 10 + idx + 1;
+    const qKey = `p${part}q${idx}`;
+    const savedAnswer = userAnswers[qKey];
+    const isSubmitted = partSubmitted[part];
+    
+    html += `<div class="question" id="q${qKey}" style="animation-delay: ${idx * 0.05}s;">
+      <div class="q-text"><span class="q-num">${globalNum}</span> <span>${q.q}</span></div>
+      <div class="options">`;
+    
+    q.options.forEach((opt, optIdx) => {
+      const isSelected = savedAnswer === optIdx;
+      const markers = ['أ', 'ب', 'ج', 'د'];
+      
+      let extraClass = '';
+      if (isSubmitted) {
+        if (optIdx === q.correct) extraClass = 'correct';
+        else if (optIdx === savedAnswer && savedAnswer !== q.correct) extraClass = 'wrong';
+      } else if (isSelected) {
+        extraClass = 'selected';
+      }
+      
+      html += `<div class="option ${extraClass}" onclick="selectOption('${qKey}', ${optIdx}, this)">
+        <span class="marker">${markers[optIdx]}</span>
+        <label>${opt}</label>
+      </div>`;
+    });
+    
+    html += `</div></div>`;
+  });
+  
+  container.innerHTML = html;
+  
+  const submitBtn = document.getElementById('submitBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const resultBox = document.getElementById('resultBox');
+  
+  if (partSubmitted[part]) {
+    submitBtn.style.display = 'none';
+    if (currentPart < 5) {
+      nextBtn.style.display = 'inline-block';
+      nextBtn.textContent = `الجزء التالي (${currentPart + 1}) ←`;
+    } else {
+      nextBtn.style.display = 'none';
+      showFinalResult();
+    }
+    showPartResult(part, partScores[part]);
+  } else {
+    submitBtn.style.display = 'inline-block';
+    nextBtn.style.display = 'none';
+    resultBox.classList.remove('show');
+    document.getElementById('finalResult').classList.remove('show');
+  }
+  
+  updateProgress();
+  updateStats();
+}
+
+/* ============================================================
+   اختيار إجابة
+   ============================================================ */
+function selectOption(qKey, optIdx, element) {
+  if (partSubmitted[currentPart]) return;
+  
+  userAnswers[qKey] = optIdx;
+  
+  const parent = element.parentElement;
+  parent.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+  element.classList.add('selected');
+  
+  updateStats();
+  updateProgress();
+}
+
+/* ============================================================
+   تصحيح الجزء
+   ============================================================ */
+function submitPart() {
+  const questions = examData[currentPart];
+  let score = 0;
+  
+  questions.forEach((q, idx) => {
+    const qKey = `p${currentPart}q${idx}`;
+    const userAns = userAnswers[qKey];
+    
+    const qElement = document.getElementById(`q${qKey}`);
+    if (!qElement) return;
+    const options = qElement.querySelectorAll('.option');
+    
+    options.forEach((opt, optIdx) => {
+      opt.style.pointerEvents = 'none';
+      opt.classList.remove('selected');
+      if (optIdx === q.correct) {
+        opt.classList.add('correct');
+      } else if (optIdx === userAns && userAns !== q.correct) {
+        opt.classList.add('wrong');
+      }
+    });
+    
+    if (userAns === q.correct) score++;
+  });
+  
+  partScores[currentPart] = score;
+  partSubmitted[currentPart] = true;
+  
+  document.querySelectorAll('.part-btn')[currentPart - 1].classList.add('done');
+  
+  showPartResult(currentPart, score);
+  
+  document.getElementById('submitBtn').style.display = 'none';
+  
+  if (currentPart < 5) {
+    const nextBtn = document.getElementById('nextBtn');
+    nextBtn.style.display = 'inline-block';
+    nextBtn.textContent = `الجزء التالي (${currentPart + 1}) ←`;
+  } else {
+    showFinalResult();
+  }
+  
+  updateProgress();
+  updateStats();
+}
+
+/* ============================================================
+   عرض نتيجة الجزء
+   ============================================================ */
+function showPartResult(part, score) {
+  const resultBox = document.getElementById('resultBox');
+  document.getElementById('partScore').textContent = `${score}/10`;
+  
+  let msg = '';
+  if (score === 10) msg = '🎉 ممتاز! إجاباتك كلها صحيحة';
+  else if (score >= 8) msg = '👍 جيد جداً! راجع الأسئلة اللي غلطت فيها';
+  else if (score >= 6) msg = '📖 مقبول. محتاج مراجعة أكتر';
+  else if (score >= 4) msg = '⚠️ ضعيف. راجع الدروس تاني';
+  else msg = '❌ محتاج مراجعة شاملة للدروس';
+  
+  document.getElementById('partMessage').textContent = msg;
+  resultBox.classList.add('show');
+}
+
+/* ============================================================
+   الانتقال للجزء التالي
+   ============================================================ */
+function nextPart() {
+  if (currentPart < 5) {
+    showPart(currentPart + 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+/* ============================================================
+   عرض النتيجة النهائية
+   ============================================================ */
+function showFinalResult() {
+  if (!partSubmitted[5]) return;
+  
+  const total = Object.values(partScores).reduce((a, b) => a + (b || 0), 0);
+  const finalDiv = document.getElementById('finalResult');
+  document.getElementById('finalScore').textContent = `${total}/50`;
+  
+  let msg = '';
+  if (total === 50) msg = '🏆 ممتاز! أنت جاهز للامتحان';
+  else if (total >= 45) msg = '🌟 ممتاز! راجع الأخطاء البسيطة';
+  else if (total >= 40) msg = '👍 جيد جداً! محتاج مراجعة بعض النقاط';
+  else if (total >= 30) msg = '📖 مقبول. محتاج مراجعة شاملة';
+  else msg = '⚠️ محتاج مراجعة الدروس من البداية';
+  
+  document.getElementById('finalMessage').textContent = msg;
+  finalDiv.classList.add('show');
+  
+  finalDiv.scrollIntoView({behavior: 'smooth', block: 'center'});
+}
+
+/* ============================================================
+   تحديث الإحصائيات
+   ============================================================ */
+function updateStats() {
+  let answered = 0;
+  let correct = 0;
+  let totalQuestions = 0;
+  
+  for (let p = 1; p <= 5; p++) {
+    const questions = examData[p];
+    totalQuestions += questions.length;
+    
+    questions.forEach((q, idx) => {
+      const qKey = `p${p}q${idx}`;
+      const userAns = userAnswers[qKey];
+      if (userAns !== undefined) {
+        answered++;
+        if (userAns === q.correct) correct++;
+      }
+    });
+  }
+  
+  document.getElementById('statAnswered').textContent = answered;
+  document.getElementById('statCorrect').textContent = correct;
+  document.getElementById('statRemaining').textContent = totalQuestions - answered;
+}
+
+/* ============================================================
+   تحديث شريط التقدم
+   ============================================================ */
+function updateProgress() {
+  let answeredInPart = 0;
+  const questions = examData[currentPart];
+  
+  questions.forEach((q, idx) => {
+    const qKey = `p${currentPart}q${idx}`;
+    if (userAnswers[qKey] !== undefined) answeredInPart++;
+  });
+  
+  const percent = Math.round((answeredInPart / questions.length) * 100);
+  document.getElementById('progressFill').style.width = percent + '%';
+  document.getElementById('progressPercent').textContent = percent + '%';
+  document.getElementById('progressLabel').textContent = `الجزء ${currentPart} من 5 - تم الإجابة على ${answeredInPart} من ${questions.length}`;
+}
+
+/* ============================================================
+   التهيئة الأولية عند تحميل الصفحة
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  renderPart(1);
+  updateProgress();
+  updateStats();
+});
+
+/* ============================================================
+   اختصارات لوحة المفاتيح (اختياري)
+   ============================================================ */
+document.addEventListener('keydown', (e) => {
+  // الأسهم للتنقل بين الأجزاء
+  if (e.key === 'ArrowLeft' && currentPart < 5) {
+    showPart(currentPart + 1);
+  }
+  if (e.key === 'ArrowRight' && currentPart > 1) {
+    showPart(currentPart - 1);
+  }
+});
+
+/* ============================================================
+   منع إغلاق الصفحة أثناء الامتحان (اختياري)
+   ============================================================ */
+let examInProgress = false;
+window.addEventListener('beforeunload', (e) => {
+  const hasAnswers = Object.keys(userAnswers).length > 0;
+  if (hasAnswers && !partSubmitted[5]) {
+    e.preventDefault();
+    e.returnValue = '';
+    return '';
+  }
+});
+</script>
+</body>
+</html>
